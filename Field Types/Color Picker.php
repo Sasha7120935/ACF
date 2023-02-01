@@ -5,20 +5,23 @@ if ( ! is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 }
 $testSelect = get_field( 'test_select' );
 $testColor  = get_field( 'test_color' );
-?>
-    <div style="color:<?php echo $testColor ?>">
+if ( ! empty( $testSelect ) && ! empty( $testColor ) ) {
+	?>
+	<div style="color:<?php echo $testColor ?>">
 		<?php
-			switch ( $testSelect ) {
-				case 'red':
-					echo $testSelect . '-' . 'Red';
-					break;
-				case 'grey':
-					echo $testSelect . '-' . 'Grey';
-					break;
-				case 'black':
-					echo $testSelect . '-' . 'Black';
-					break;
-			};
+		switch ( $testSelect ) {
+			case 'red':
+				echo $testSelect . '-' . 'Red';
+				break;
+			case 'grey':
+				echo $testSelect . '-' . 'Grey';
+				break;
+			case 'black':
+				echo $testSelect . '-' . 'Black';
+				break;
+		};
 		?>
-    </div>
-<?php
+	</div>
+	<?php
+}
+get_footer();

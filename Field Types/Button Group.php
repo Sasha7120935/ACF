@@ -3,21 +3,20 @@ get_header();
 if ( ! is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 	return;
 }
-$test_button_group = get_field( 'test_button_group' );
-?>
-    <div>
-		<?php
-		switch ( $test_button_group ) {
-			case 'red':
-				echo $test_button_group . '-' . 'Red';
-				break;
-			case 'grey':
-				echo $test_button_group . '-' . 'Grey';
-				break;
-			case 'black':
-				echo $test_button_group . '-' . 'Black';
-				break;
-		};
-		?>
-    </div>
-<?php
+$testButtonGroup = get_field( 'test_button_group' );
+if ( ! empty( $testSelect ) && ! empty( $testColor ) ) {
+	switch ( $testButtonGroup ) {
+		case 'red':
+			echo $testButtonGroup . '-' . __( 'Red', '' );
+			break;
+		case 'grey':
+			echo $testButtonGroup . '-' . __( 'Grey', '' );
+			break;
+		case 'black':
+			echo $testButtonGroup . '-' . __( 'Black', '' );
+			break;
+		default:
+			echo __( 'Not', '' );
+	};
+}
+get_footer();

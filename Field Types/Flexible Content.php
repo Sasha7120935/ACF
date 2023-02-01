@@ -12,15 +12,16 @@ if ( have_rows( 'test_flexible_content' ) ):
 		if ( get_row_layout() == 'section_column_test' ):
 			$columns = get_sub_field( 'test_columns' );
 			?>
-            <div class="row">
+			<div class="row">
 				<?php foreach ( $columns as $column ) : ?>
-                    <div class="col-lg-4">
-                        <h1><?php echo $column['test_column'] ?></h1>
-                    </div>
+					<div class="col-lg-4">
+						<h1><?php echo $column['test_column'] ?></h1>
+					</div>
 				<?php endforeach; ?>
-            </div>
+			</div>
 		<?php endif;
 	endwhile;
 else:
 	echo '<p>' . __( 'Not', '' ) . '</p>';
 endif;
+get_footer();
