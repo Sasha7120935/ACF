@@ -3,22 +3,13 @@ get_header();
 if ( ! is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 	return;
 }
-?>
-    <div>
-        <?php
-		if ( have_rows( 'repeater' ) ):
-			while ( have_rows( 'repeater' ) ) : the_row(); ?>
-                <div>
-                    <div>
-	                    <?php echo esc_html( get_sub_field( 'repeater-text' ) ); ?>
-                    </div>
-                    <div>
-						<?php echo esc_html( get_sub_field( 'repeater-text-2' ) ); ?>
-                    </div>
-                </div>
-			<?php
-			endwhile;
-		endif;
-		get_footer(); ?>
-    </div>
-<?php
+$test_taxonomy = get_field( 'test_taxonomy' ); ?>
+<div>
+	<?php
+	if ( $test_taxonomy ): ?>
+        <h2><?php echo esc_html( $test_taxonomy->name ); ?></h2>
+        <p><?php echo esc_html( $test_taxonomy->description ); ?></p>
+	<?php else:
+		echo '<p>' . __( 'Not', '' ) . '</p>';
+	endif; ?>
+</div>

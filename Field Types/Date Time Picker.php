@@ -3,22 +3,12 @@ get_header();
 if ( ! is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 	return;
 }
-?>
+$date_time_picker = get_field( 'test_date_time_picker' ); ?>
     <div>
-        <?php
-		if ( have_rows( 'repeater' ) ):
-			while ( have_rows( 'repeater' ) ) : the_row(); ?>
-                <div>
-                    <div>
-	                    <?php echo esc_html( get_sub_field( 'repeater-text' ) ); ?>
-                    </div>
-                    <div>
-						<?php echo esc_html( get_sub_field( 'repeater-text-2' ) ); ?>
-                    </div>
-                </div>
-			<?php
-			endwhile;
-		endif;
-		get_footer(); ?>
+		<?php if ( $date_time_picker ): ?>
+            <p>Event starts: <?php echo $date_time_picker ?></p>
+		<?php else:
+			echo '<p>' . __( 'Not', '' ) . '</p>';
+		endif; ?>
     </div>
 <?php
